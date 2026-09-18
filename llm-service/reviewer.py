@@ -1,4 +1,5 @@
 import os
+import json
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -27,4 +28,7 @@ review_chain = prompt | structured_reviewer
 def generate_review (pr_title: str, git_diff: str) -> str:
     """Executes the LangChain review and returns a JSON string."""
     result: ReviewResult = review_chain.invoke ({"pr_title": pr_title, "git_diff": git_diff})
+    
+    if isinstance(result, dict):
+        return json.dumps(result)
     return result.model_dump_json ()
