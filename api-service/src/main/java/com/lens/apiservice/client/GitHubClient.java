@@ -24,7 +24,7 @@ public class GitHubClient {
         // In GitHub's API, every PR is also an Issue, making this the correct endpoint for general PR comments
         String url = "/repos/" + payload.repository() + "/issues/" + payload.pullRequestNumber() + "/comments";
         
-        StringBuilder markdown = new StringBuilder("### 🤖 AI Code Review Findings\n\n");
+        StringBuilder markdown = new StringBuilder("### 🤖 Lens AI Reviewer\n\n");
         if (payload.review().comments().isEmpty()) {
             markdown.append("✅ No significant logic, edge-case, or security issues found.");
         } else {
