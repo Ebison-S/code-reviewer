@@ -48,8 +48,6 @@ services:
       - DB_HOST=mysql
       - REDIS_HOST=redis
       - KAFKA_BROKER=kafka:9092
-      - github.webhook.secret=your_development_webhook_secret_here
-      - github.api.token=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
     depends_on:
       mysql:
         condition: service_healthy
